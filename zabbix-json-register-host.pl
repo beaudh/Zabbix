@@ -98,12 +98,17 @@ sub create_host {	# http://www.zabbix.com/documentation/1.8/api/host/create
 	jsonrpc => 2.0,
 	method 	=> "host.create",
 	params 	=> {
-		host	=>	"$node",
-		ip		=>	"$ipaddr",
-		port	=>	10050,
-		useip	=>	1,
-		dns		=>	"$node",
-		groups	=>	[
+			interfaces => [
+        		{
+			type => 1,
+			main => 1,
+			useip => 1,
+			ip => "$ipaddr",
+			dns => "$node",
+			port => 10050,
+        		}
+    			],
+			groups	=>	[
 			{
 			groupid		=>	2
          	}
